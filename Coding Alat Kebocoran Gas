@@ -1,0 +1,25 @@
+void setup() { 
+pinMode (A1,INPUT_PULLUP); pinMode (12,OUTPUT);  
+digitalWrite (12, OFF);  pinMode (11,OUTPUT); pinMode (13,OUTPUT); 
+lcd.begin();  Serial.begin(9600); SIM800L.begin(9600);  lcd.begin();  lcd.setBacklight(255);   lcd.setCursor(00,00); lcd.print("      UBSI      "); lcd.setCursor(00,1); lcd.print("  DETEKTOR GAS  "); delay(2000); lcd.clear(); 
+} 
+
+void loop() { 
+persen_gas 	= map(analogRead(gas_pin),00,1023,0,100); 
+gas_ppm 	= 
+map(analogRead(gas_pin),00,1023,0,10000); 
+interval 	= 
+map(analogRead(gas_pin),00,1023,1000,10); Serial.print (persen_gas ); 
+Serial.println (" %"); 
+Serial.print (gas_ppm,00); 
+Serial.println (" ppm"); 
+lcd.setCursor (00,00); 
+lcd.print ("P.Gas:"); 
+lcd.print (persen_gas,1); 
+ lcd.print ("%");
+ lcd.print (" "); 
+lcd.setCursor (00,1); 
+lcd.print ("C.Gas:"); 
+lcd.print (gas_ppm,00); 
+ lcd.print ("ppm"); 
+lcd.print (" "); 
